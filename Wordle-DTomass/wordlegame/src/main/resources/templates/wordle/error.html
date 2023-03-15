@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wordle</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</head>
+<body class="container">
+  <div class="card text-white bg-danger mb-3">
+    <div class="card-header"><h3>Cuidador!!!</h3></div>
+    <div>
+      <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/sc42f6dd54c461606/image/i0e737e6ee0cc21a1/version/1349859141/gif-de-chiquito-de-la-calzada.gif" class="img-fluid" max-height="20%">
+    </div>
+    <div class="card-body">
+      El numero de letras de la palabra introducida no coincide con el numero de letras de la palabra a descubrir
+    </div>
+  </div>
+    <form th:action="@{/wordleIni}" method="POST">
+		<button class="btn btn-secondary" type="submit">Volver a intentar</button>
+	</form>
+</body>
+</html>

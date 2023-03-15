@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wordle</title>
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</head>
+<body class="container">
+  <div class="card mb-3">
+    <div class="card-header"><h4>Mal tio, mal</h4></div>
+    <div class="card-body">
+        <div>La palabra correcta era: <b><p th:text="${palabra}"></p></b> Casi lo tenias, pero no pasa nada, la vida sigue y las derrotas te hacen mas fuerte</div>
+    </div>
+    <div>
+      <img src="https://th.bing.com/th/id/OIP.kfE3kpjB_3jhvcr2qMP1agHaFD?pid=ImgDet&w=164&h=111.8021505376344&c=7&dpr=1,5" class="img-fluid">
+    </div>
+  </div>
+    <form th:action="@{/menuIni}" method="GET">
+		<button class="btn btn-primary" type="submit">Volver al inicio</button>
+	</form>
+</body>
+</html>

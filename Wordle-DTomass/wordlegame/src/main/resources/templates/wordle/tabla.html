@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wordle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+	<style>
+		td:hover{
+			background-color: grey;
+		}
+	</style>
+	<script>
+		function explicasao(letra, color){
+
+			if(color==1){
+				document.getElementById("explicacion").innerHTML = "<div class='card text-white bg-success mb-3' style='max-width: 18rem; text-align: justify;'><div class='card-header'>Explicacion!!!!!</div><div class='card-body'><h5 class='card-title'>Muy bien</h5><p class='card-text'>Si la letra <b>"+letra+"</b> esta en verde significa que la letra esta en la palabra que buscas y ademas esta en la posicion correcta, asi que se un poco listo y no me la toques :)</p><a onclick='cerrar()' href='#' class='btn btn-primary'>OK</a></div></div>";
+			}else if(color==2){
+				document.getElementById("explicacion").innerHTML = "<div class='card text-white bg-warning mb-3' style='max-width: 18rem; text-align: justify;'><div class='card-header'>Explicacion!!!!!</div><div class='card-body'><h5 class='card-title'>Meh</h5><p class='card-text'>Si la letra <b>"+letra+"</b> esta en amarillo significa que la letra esta en la palabra que buscas pero no esta en la posicion correcta, si piensas un poco lo tienes :)</p><a onclick='cerrar()' href='#' class='btn btn-primary'>OK</a></div></div>";
+			}else{
+				document.getElementById("explicacion").innerHTML = "<div class='card text-white bg-danger mb-3' style='max-width: 18rem; text-align: justify;'><div class='card-header'>Explicacion!!!!!</div><div class='card-body'><h5 class='card-title'>Mal chico, mal</h5><p class='card-text'>Si la letra <b>"+letra+"</b> esta en rojo significa que no puedes ir peor, la letra no esta en la palabra, asi que espabila -_-</p><a onclick='cerrar()' href='#' class='btn btn-primary'>OK</a></div></div>";
+			}
+		}
+		function cerrar(){
+			document.getElementById("explicacion").innerHTML = "";
+		}
+	</script>
+</head>
+<body class="container-fluid">
+	<br>
+	<form class="form" th:action="@{/wordle/prueba}" method="POST">
+		<div class="row mb-3">
+			<label class="form-label"><h3>Introduce una palabra</h3></label>
+			<div class="col-9">
+				<input class="form-control" type="text" name="prueba" th:value="${prueba}" placeholder="Insertar palabra" size="50" >
+			</div>
+			<div class="col-3">
+				<button class="btn btn-success" type="submit">Comprobar</button>
+			</div>
+			
+			<div class="form-text">Fijate bien en que tenga el numero de letras que se solicita.</div>
+		</div>
+	</form>
+	<div class="card">
+		<div class="card-body">
+		  	<h4 class="card-title">Resultado</h4>
+		  	<table class="table table-dark table-bordered text-center">
+				<td th:onclick="explicasao([[${letrita.letra}]], [[${letrita.color}]])" th:each="letrita : ${letrotas}">
+					<div th:switch="${letrita.color}">
+						<div th:case="1">
+							<small  style="color: green"><b th:text="${letrita.letra}"></b></small>
+						</div>
+						<div th:case="2">
+							<small  style="color: yellow"><b th:text="${letrita.letra}"></b></small>
+						</div>
+						<div th:case="3">
+							<small  style="color: red"><b th:text="${letrita.letra}"></b></small>
+						</div>
+					</div>
+				</td>
+			</table>
+		<div id="explicacion"></div>
+		<p>Intentos restantes: <span th:text="${intentos}"></span></p>
+		</div>
+	  </div>
+
+	
+	<div class="p-2">
+		<a class="btn btn-primary" th:href="@{/menuIni}">Menu principal</a>
+	</div>
+</body>
+<script>
+	
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wordle</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</head>
+<body class="container-fluid">
+    <br>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">Reglas!</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <div>
+            Tienes que adivinar la palabra oculta en X intentos (se especifica despues) y el color de las letras cambia para mostrar lo cerca que estás.
+            Para comenzar el juego, simplemente ingresa cualquier palabra y segun el color de las letras sabras que:
+        </div>
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item d-flex justify-content-between align-items-start bg-success">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Verde</div>
+                Está en la palabra y en el lugar correcto. 
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start bg-warning">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Amarillo</div>
+                Está en la palabra pero en el lugar equivocado.
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start bg-danger">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Rojo</div>
+                No está en la palabra en absoluto.
+              </div>
+            </li>
+          </ol>
+    </div>
+    <br><br><br><br>
+    <div class="row text-center">
+        <form class="form" th:action="@{/wordle/empieza}" method="POST">
+            <button type="submit" class="btn btn-primary">Empezar</button>
+        </form>
+        <div class="align-self-center col p-5">
+            <a class="btn btn-primary" th:href="@{/menuIni}">Menu principal</a>
+            <a class="btn btn-success" href="https://wordleespanol.org">Juega a un wordle decente:)</a>
+        </div>
+    </div>
+</body>
+</html>
